@@ -15,7 +15,8 @@ import traceback
 load_dotenv()
 
 # Configure Google AI
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+#GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")  #works locally
+GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]  # Works in Streamlit Cloud
 if not GOOGLE_API_KEY:
     st.error("Google API key not found. Please add GOOGLE_API_KEY to your .env file.")
     st.stop()
@@ -142,7 +143,7 @@ def process_user_input(user_question):
 def main():
     """Main application function with enhanced UI."""
     st.set_page_config(
-        page_title="Knowledge Agentic AI with RAG: Advanced PDF Query Enginet",
+        page_title="Analyze AI with RAG: Advanced PDF Query Engine",
         page_icon="💡",
         layout="wide"
     )
@@ -156,7 +157,7 @@ def main():
     </style>
     """, unsafe_allow_html=True)
     
-    st.title("Knowledge Agentic AI with RAG: Advanced PDF Query Engine💡")
+    st.title("Analyze AI with RAG: Advanced PDF Query Engine💡")
     st.markdown("Upload PDFs and ask questions about their content")
     
     # Initialize session state
